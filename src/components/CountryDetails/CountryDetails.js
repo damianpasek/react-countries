@@ -3,11 +3,10 @@ import PropTypes from 'prop-types';
 import {Avatar, Card, CardHeader, Dialog} from "material-ui";
 import './CountryDetails.css';
 
-class CountryDetails extends React.Component {
+export class CountryDetails extends React.Component {
   static PropTypes = {
     country: PropTypes.object.isRequired
   };
-
 
   constructor(props) {
     super(props);
@@ -54,8 +53,8 @@ class CountryDetails extends React.Component {
     const {country} = this.props;
 
     return (
-      <div className="component-country-details">
-        <Card onClick={() => this.setState({isModalOpen: true})}>
+      <div className="component-country-details" onClick={() => this.setState({isModalOpen: true})}>
+        <Card>
           <CardHeader
             title={country.name}
             subtitle={country.region}
@@ -66,5 +65,3 @@ class CountryDetails extends React.Component {
     )
   }
 }
-
-export default CountryDetails;
