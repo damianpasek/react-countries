@@ -3,13 +3,25 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "material-ui": "^0.19.1",
+    "node-sass-chokidar": "^0.0.3",
+    "npm-run-all": "^4.1.1",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "react-scripts": "1.0.13"
+    "react-redux": "^5.0.6",
+    "react-router": "2.8.1",
+    "react-router-redux": "4.0.6",
+    "react-scripts": "1.0.13",
+    "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build-css": "node-sass-chokidar src/ -o src/",
+    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
+    "start-js": "react-scripts start",
+    "start": "NODE_PATH=src npm-run-all -p watch-css start-js",
+    "build-staging": "npm run build-css && NODE_PATH=src REACT_APP_ENV=staging react-scripts build",
+    "build-production": "npm run build-css && NODE_PATH=src REACT_APP_ENV=production react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   }
