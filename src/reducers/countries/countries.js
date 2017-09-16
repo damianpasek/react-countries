@@ -1,4 +1,4 @@
-import {FETCH, FETCH_SUCESS, FETCH_NOT_FOUND, FETCH_ERROR} from "../../types/countries";
+import {FETCH, FETCH_SUCCESS, FETCH_NOT_FOUND, FETCH_ERROR} from "../../types/countries";
 
 const initialState = {
   data: [],
@@ -11,7 +11,7 @@ export default function (state = initialState, action = {}) {
   switch (action.type) {
     case FETCH:
       return {...initialState, loading: true};
-    case FETCH_SUCESS:
+    case FETCH_SUCCESS:
       return {...state, loading: false, data: action.payload};
     case FETCH_NOT_FOUND:
       return {...state, loading: false, notFound: true};

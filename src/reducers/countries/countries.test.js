@@ -1,5 +1,5 @@
 import reducer from './countries';
-import {FETCH, FETCH_SUCESS, FETCH_NOT_FOUND, FETCH_ERROR} from "../../types/countries";
+import {FETCH, FETCH_SUCCESS, FETCH_NOT_FOUND, FETCH_ERROR} from "../../types/countries";
 
 describe('Countries reducer', () => {
 
@@ -15,11 +15,8 @@ describe('Countries reducer', () => {
   });
 
   it('Initial state with loading flag set to true on FETCH', () => {
-
     expect(reducer(undefined, {type: FETCH})).toEqual({...initialState, loading: true});
-
     expect(reducer({data: [{}], notFound: true}, {type: FETCH})).toEqual({...initialState, loading: true});
-
   });
 
   it('State with loading flag set to false and data array on FETCH_SUCCESS', () => {
@@ -29,7 +26,7 @@ describe('Countries reducer', () => {
     ];
     let state = reducer(undefined, {type: FETCH});
 
-    expect(reducer(state, {type: FETCH_SUCESS, payload: mockData})).toEqual({
+    expect(reducer(state, {type: FETCH_SUCCESS, payload: mockData})).toEqual({
       ...initialState,
       data: mockData,
       loading: false
