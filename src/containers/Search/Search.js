@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from "react-redux";
 import {Card, CardText, TextField} from "material-ui";
+import {fetch} from "../../actions/countries";
 import './Search.css';
 
 class Search extends React.Component {
@@ -11,6 +12,8 @@ class Search extends React.Component {
   }
 
   handleChange(event) {
+    const text = event.target.value;
+    this.props.fetch(text);
   }
 
   render() {
@@ -20,7 +23,7 @@ class Search extends React.Component {
           <CardText>
             <TextField
               floatingLabelText="Search..."
-              hintText="Enter some artist name"
+              hintText="Enter some country name"
               onChange={this.handleChange}
               fullWidth={true} />
           </CardText>
@@ -33,5 +36,5 @@ class Search extends React.Component {
 export default connect(
   (state, props) => ({
   }),
-  {}
+  {fetch}
 )(Search);
