@@ -1,8 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {Avatar, Card, CardHeader, Dialog} from "material-ui";
 import './CountryDetails.css';
 
 class CountryDetails extends React.Component {
+  static PropTypes = {
+    country: PropTypes.object.isRequired
+  };
+
 
   constructor(props) {
     super(props);
