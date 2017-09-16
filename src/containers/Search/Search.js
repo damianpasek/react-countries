@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 import {Card, CardText, TextField} from "material-ui";
 import {fetch} from "../../actions/countries/countries";
@@ -6,6 +7,9 @@ import {debounce} from 'lodash';
 import './Search.css';
 
 class Search extends React.Component {
+  static PropTypes = {
+    fetch: PropTypes.func.isRequired
+  };
 
   constructor(props) {
     super(props);
@@ -37,8 +41,4 @@ class Search extends React.Component {
   }
 }
 
-export default connect(
-  (state, props) => ({
-  }),
-  {fetch}
-)(Search);
+export default connect(null, {fetch})(Search);
