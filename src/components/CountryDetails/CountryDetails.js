@@ -1,5 +1,6 @@
 import React from 'react';
-import {Card, CardText, CardTitle, Chip, Dialog} from "material-ui";
+import {Avatar, Card, CardHeader, Dialog} from "material-ui";
+import './CountryDetails.css';
 
 class CountryDetails extends React.Component {
 
@@ -10,8 +11,13 @@ class CountryDetails extends React.Component {
     }
   }
 
+  renderRow(label, item) {
+    const text = Array.isArray(item) ? item.join(', ') : item;
+    return <div>{`${label}: ${text}`}</div>
+  }
+
   renderModal() {
-    const {name, capital, region, currencies} = this.props.country;
+    const {name, capital, region, currencies, languages, timezones, flag} = this.props.country;
 
     return (
       <div>
@@ -21,9 +27,19 @@ class CountryDetails extends React.Component {
           open={this.state.isModalOpen}
           onRequestClose={() => this.setState({isModalOpen: false})}>
 
-          <Chip>Capital: {capital}</Chip>
+          <div className="row">
+            <div className="col-md-4">
+              <img style={{width: '200px'}} src={flag} alt=""/>
+            </div>
+            <div className="col-md-8">
+              {this.renderRow('Capital', capital)}
+              {this.renderRow('Region', region)}
+              {this.renderRow('Currencies', currencies.map(currency => `${currency.name} (${currency.symbol})`))}
+              {this.renderRow('Languages', languages.map(lang => lang.name))}
+              {this.renderRow('Timezones', timezones)}
+            </div>
 
-
+          </div>
         </Dialog>
       </div>
     )
@@ -35,12 +51,10 @@ class CountryDetails extends React.Component {
     return (
       <div className="component-country-details">
         <Card onClick={() => this.setState({isModalOpen: true})}>
-          <CardTitle title={country.name} />
-          <CardText>
-            <pre>
-              {JSON.stringify(country, null, 2)}
-            </pre>
-          </CardText>
+          <CardHeader
+            title={country.name}
+            subtitle={country.region}
+            avatar={<Avatar src={country.flag} backgroundColor="#fff" />} />
         </Card>
         {this.renderModal()}
       </div>
