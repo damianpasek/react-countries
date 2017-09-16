@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from "react-redux";
 import {Card, CardText, TextField} from "material-ui";
-import {fetch} from "../../actions/countries";
+import {fetch} from "../../actions/countries/countries";
 import './Search.css';
 
 class Search extends React.Component {
