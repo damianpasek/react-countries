@@ -2,19 +2,23 @@ import React from 'react';
 import {connect} from "react-redux";
 import {Card, CardText, TextField} from "material-ui";
 import {fetch} from "../../actions/countries/countries";
+import {debounce} from 'lodash';
 import './Search.css';
 
 class Search extends React.Component {
 
   constructor(props) {
     super(props);
-    this.handleChange = this.handleChange.bind(this);
+    this.state = {
+      text: ''
+    };
+    this.fetch = debounce(this.props.fetch, 300);
   }
 
-  handleChange(event) {
+  handleChange = event => {
     const text = event.target.value;
-    this.props.fetch(text);
-  }
+    this.setState({text}, () => {this.fetch(text)});
+  };
 
   render() {
     return (
