@@ -1,3 +1,3 @@
 export const selectors = {
-  getCountriesList: (state) => state.countries.data
+  getCountries: (state) => state.countries
 };

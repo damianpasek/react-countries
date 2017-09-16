@@ -8,7 +8,7 @@ const getApiUrl = (text) => {
   return 'https://restcountries.eu/rest/v2/all';
 };
 
-export const fetch = (text) => {
+export const fetch = (text = '') => {
   return (dispatch) => {
     dispatch({type: FETCH});
 
