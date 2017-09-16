@@ -1,4 +1,4 @@
-import {FETCH, FETCH_SUCESS, FETCH_NOT_FOUND, FETCH_ERROR} from "../types/countries";
+import {FETCH, FETCH_SUCESS, FETCH_NOT_FOUND, FETCH_ERROR} from "../../types/countries";
 
 const initialState = {
   data: [],
