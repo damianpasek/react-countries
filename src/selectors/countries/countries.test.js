@@ -15,6 +15,6 @@ describe('Countries selectors', () => {
       }
     };
 
-    expect(selectors.getCountries(mockData)).toEqual(mockData.countries.data);
+    expect(selectors.getCountries(mockData)).toEqual(mockData.countries);
   })
 });

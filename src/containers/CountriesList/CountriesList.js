@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 import {fetch} from "../../actions/countries/countries";
 import {countriesSelectors} from "../../selectors";
-import CountryDetails from "../../components/CountryDetails/CountryDetails";
+import {CountryDetails} from "../../components/CountryDetails/CountryDetails";
 import {Card, CardTitle, CircularProgress} from "material-ui";
 import './CountriesList.css';
 
@@ -23,7 +23,7 @@ class CountriesList extends React.Component {
 
     if (countries && countries.loading) {
       return (
-        <div className={className}>
+        <div className={`${className} loading`}>
           <CircularProgress size={60} thickness={7} />
         </div>
       )
@@ -31,9 +31,9 @@ class CountriesList extends React.Component {
 
     if (countries && countries.error) {
       return (
-        <div className={`${className} loading`}>
+        <div className={`${className} error`}>
           <Card>
-            <CardTitle title="Error" subtitle={countries.error} />
+            <CardTitle title="Error" subtitle={JSON.stringify(countries.error)} />
           </Card>
         </div>
       )
