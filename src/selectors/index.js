@@ -1,1 +1,1 @@
-export {selectors as countriesSelectors} from './countries';
+export {selectors as countriesSelectors} from './countries/countries';

@@ -1,8 +1,8 @@
 import {combineReducers} from 'redux';
 import {routerReducer} from 'react-router-redux';
-import albums from "./countries";
+import countries from "./countries";
 
 export default combineReducers({
   routing: routerReducer,
-  albums
+  countries
 });
