@@ -2,7 +2,7 @@ import {selectors} from "./countries";
 
 describe('Countries selectors', () => {
 
-  it('getCountriesList selector', () => {
+  it('getCountries selector', () => {
     const mockData = {
       countries: {
         data: [
@@ -15,6 +15,6 @@ describe('Countries selectors', () => {
       }
     };
 
-    expect(selectors.getCountriesList(mockData)).toEqual(mockData.countries.data);
+    expect(selectors.getCountries(mockData)).toEqual(mockData.countries.data);
   })
 });
